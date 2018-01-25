@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @author.name %>
+</p>
+
+<!-- <h2>Books</h2>
+<%=  @author.books %>
+<br/>
+ -->
+<h2>Add Books</h2>
+
+<%= form_for @author do |f| %>
+	<%= f.fields_for :books do |b| %>
+	  <div>
+	    <%= b.label :title %>
+	    <%= b.text_field :title %><br/><br/>
+	    <%= b.label :published_at %>
+	    <%= b.date_select :published_at %><br/><br/>
+	  </div>
+	<% end %>
+	<%= f.submit %>
+<% end %>
+
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<%= link_to 'Back', authors_path %>
+
